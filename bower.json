@@ -1,10 +1,13 @@
 {
   "name": "spwrapper",
   "version": "0.1.1",
+  "description": "Mild wrapper for SPServices, complete with common helper methods.",
+  "homepage": "https://github.com/CreativeElementsGroup/spwrapper",
   "dependencies": {
     "jquery": "1.10.1",
     "SPServices": "sympmarc/SPServices#0.7.2"
   },
+  "main": "spwrapper.js",
   "ignore": [
     "**/.*",
     "node_modules",
