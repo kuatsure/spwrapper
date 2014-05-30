@@ -8,6 +8,17 @@ spwrapper.list.clean = {};
 
 spwrapper.helper = {};
 
+spwrapper.helper.batchFormatter = function(batchArray) {
+  var b, batchString, i, _i, _len;
+  batchString = '<Batch OnError="Continue" PreCalc="TRUE">';
+  for (i = _i = 0, _len = batchArray.length; _i < _len; i = ++_i) {
+    b = batchArray[i];
+    batchString += "<Method ID=\"" + (i + 1) + "\" Cmd=\"New\">\n  <Field Name=\"" + b.columnHeader + "\">" + b.value + "</Field>\n</Method>";
+  }
+  batchString += '</Batch>';
+  return batchString;
+};
+
 spwrapper.helper.queryFormatter = function(queryArray) {
   var queryItem, queryString, _i, _len;
   queryString = '<Query>';
@@ -17,6 +28,26 @@ spwrapper.helper.queryFormatter = function(queryArray) {
   }
   queryString += '</Query>';
   return queryString;
+};
+
+spwrapper.list.add = function(settings, callback) {
+  return $().SPServices({
+    operation: "UpdateListItems",
+    async: false,
+    listName: settings.listName,
+    updates: settings.batch,
+    completefunc: function(data, status) {
+      if (status === "success") {
+        if (typeof callback === "function") {
+          callback(settings.onSuccess);
+        }
+      } else {
+        if (typeof callback === "function") {
+          callback(settings.onError);
+        }
+      }
+    }
+  });
 };
 
 spwrapper.list.clean.id = function(original) {
