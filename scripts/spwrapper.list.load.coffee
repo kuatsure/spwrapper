@@ -7,8 +7,6 @@ spwrapper.list.load = ( settings, callback ) ->
     CAMLQuery: settings.query if settings?.query?
     CAMLViewFields: "<ViewFields Properties='True' />"
     completefunc: ( data, status ) ->
-      # console?.log? data if DEBUG
-
       if status is "success"
         callback settings, $(data.responseXML).SPFilterNode( "z:row" )
 
