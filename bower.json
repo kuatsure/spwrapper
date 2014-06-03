@@ -1,6 +1,6 @@
 {
   "name": "spwrapper",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Mild wrapper for SPServices, complete with common helper methods.",
   "homepage": "https://github.com/CreativeElementsGroup/spwrapper",
   "dependencies": {
