@@ -1,4 +1,4 @@
-spwrapper.list.add = ( settings, callback ) ->
+spwrapper.list.update = ( settings, callback ) ->
   $().SPServices
     operation: "UpdateListItems"
     async: false
